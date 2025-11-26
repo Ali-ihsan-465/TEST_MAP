@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="./resources/ol.css">
+        <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+        <link href="resources/photon-geocoder-autocomplete.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+        <link rel="stylesheet" href="./resources/qgis2web.css">
+        <style>
+        html, body {
+            background-color: #ffffff;
+        }
+        .ol-control > * {
+            background-color: #f8f8f8!important;
+            color: #444444!important;
+            border-radius: 0px;
+        }
+        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
+            color: #444444!important;
+        }
+        .search-layer-input-search {
+            background-color: #f8f8f8!important;
+        }
+        .ol-control > *:focus, .ol-control >*:hover {
+            background-color: rgba(248, 248, 248, 0.7)!important;
+        } 
+        .ol-control {
+            background-color: rgba(255,255,255,.4) !important;
+            padding: 2px !important;
+        } 
+        </style>
+
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* --- STİLLER (BAŞLIK, KUZEY OKU VE İSİMLER) --- */
+        
+        /* 1. Başlık Stili */
+        #map-title {
+            position: absolute;
+            top: 10px;
+            left: 60px;
+            z-index: 2000;
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 3px solid #000;
+            padding: 10px 15px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            max-width: 350px;
+        }
+        
+        #map-title h2 {
+            margin: 0;
+            color: red;
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-transform: uppercase;
+            line-height: 1.4;
+        }
+
+        /* 2. Kuzey Oku Stili */
+        #north-arrow {
+            position: absolute;
+            bottom: 35px;
+            right: 15px;
+            z-index: 2000;
+            width: 50px;
+            height: auto;
+            pointer-events: none;
+        }
+
+        /* 3. Hazırlayanlar (Künye) Stili - YENİ EKLENDİ */
+        #map-credits {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            z-index: 2000;
+            background-color: rgba(220, 220, 220, 0.8); /* Hafif gri saydam çerçeve */
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Arial', sans-serif;
+            font-size: 13px;
+            color: blue; /* Mavi yazı rengi */
+            font-weight: bold;
+            line-height: 1.5;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+        }
+        
+        #map-credits span {
+            font-size: 11px;
+            font-weight: normal;
+            font-style: italic;
+            display: block;
+            margin-top: 2px;
+            color: #00008b; /* "tarafından hazırlandı" yazısı biraz daha koyu mavi */
+        }
+        /* -------------------------------------------------- */
+
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+            
+            <!-- --- HTML ELEMANLARI --- -->
+            
+            <!-- Başlık Kutusu -->
+            <div id="map-title">
+                <h2>Altındağ Hergelen Meydanı Kentsel Dönüşüm Projesi Yıkım Tahliye Durumu</h2>
+            </div>
+
+            <!-- Hazırlayanlar Bölümü (Sol Alt) - YENİ EKLENDİ -->
+            <div id="map-credits">
+                Mücahit Toprak<br>
+                Ali İhsan Yıldırım<br>
+                Berfin Akca<br>
+                <span>tarafından hazırlandı</span>
+            </div>
+
+            <!-- Kuzey Oku -->
+            <img id="north-arrow" src="images/Kuzeyoku.png" alt="Kuzey Oku">
+            
+            <!-- ------------------------------------ -->
+
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+        <script src="resources/qgis2web_expressions.js"></script>
+        <script src="./resources/functions.js"></script>
+        <script src="./resources/ol.js"></script>
+        <script src="./resources/ol-layerswitcher.js"></script>
+        <script src="resources/photon-geocoder-autocomplete.min.js"></script>
+        <script src="layers/Yaplar_1.js"></script><script src="layers/KentselDnmOfisi_2.js"></script><script src="layers/YkmTamamlananYaplar_3.js"></script><script src="layers/TahliyesiTamamlananYaplar_4.js"></script>
+        <script src="styles/Yaplar_1_style.js"></script><script src="styles/KentselDnmOfisi_2_style.js"></script><script src="styles/YkmTamamlananYaplar_3_style.js"></script><script src="styles/TahliyesiTamamlananYaplar_4_style.js"></script>
+        <script src="./layers/layers.js" type="text/javascript"></script> 
+        <script src="./resources/Autolinker.min.js"></script>
+        <script src="./resources/qgis2web.js"></script>        
+    </body>
+</html>
